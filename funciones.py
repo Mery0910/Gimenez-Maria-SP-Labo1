@@ -130,7 +130,7 @@ def obtener_nombre_jugador(pantalla, puntaje: int) -> str:
     fuente = pygame.font.SysFont("Arial", 60)
     while True:
         
-        pygame.display.flip()   
+           
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -142,6 +142,7 @@ def obtener_nombre_jugador(pantalla, puntaje: int) -> str:
                     nombre = nombre[:-1]
                 else:
                     nombre += event.unicode
+                    
         pantalla.fill(COLOR_VIOLETA)
         text_ingrese_nombre = fuente.render("Ingrese su nombre:", True, COLOR_BLANCO)
         pantalla.blit(text_ingrese_nombre, (660 - text_ingrese_nombre.get_width() / 2, 200))
@@ -151,6 +152,7 @@ def obtener_nombre_jugador(pantalla, puntaje: int) -> str:
         pantalla.blit(texto_game_over,(660 - texto_game_over.get_width() / 2 , 100))
         texto_score = fuente.render(str(f"Score: {puntaje}"), True, COLOR_BLANCO)
         pantalla.blit(texto_score,(650 - texto_score.get_width()/2,810))
+        pygame.display.flip()
 
 def guardar_puntajes(nombre: str, puntaje: int):
     """
@@ -180,7 +182,6 @@ def mostrar_puntajes(pantalla):
     Parametros:
     (pantalla) -> any
     """
-
     fuente_titulo = pygame.font.SysFont("Arial", 80)
     fuente_puntaje = pygame.font.SysFont("Arial", 50)
     try:
